@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "node-pre-gypify": "./pregypify.js"
+    "node-pre-gypify": "./pregypify.js",
+    "node-pre-populate": "./populate.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,6 +22,8 @@
   },
   "homepage": "https://github.com/tcr/node-precompilify",
   "dependencies": {
-    "gyp-reader": "0.0.2"
+    "gyp-reader": "0.0.2",
+    "mkdirp": "^0.5.1",
+    "node-pre-gyp": "^0.6.7"
   }
 }
