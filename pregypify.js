@@ -7,21 +7,27 @@ var gyp = require('gyp-reader');
 gyp('./binding.gyp', function (err, data) {
 	var targetName = data.targets[0].target_name;
 
-	(data.targets || []).push({
-      "target_name": "action_after_build",
-      "type": "none",
-      "dependencies": [ "<(module_name)" ],
-      "copies": [
-        {
-          "files": [ "<(PRODUCT_DIR)/<(module_name).node" ],
-          "destination": "<(module_path)"
-        }
-      ]
-    });
-	fs.writeFileSync('./binding.gyp', JSON.stringify(data, null, '  '));
-
+	if (!data.targets.some(function (target) {
+		return target.target_name == 'action_after_build'
+	})) {
+		console.error('adding action_after_build...')
+		(data.targets || []).push({
+	      "target_name": "action_after_build",
+	      "type": "none",
+	      "dependencies": [ "<(module_name)" ],
+	      "copies": [
+	        {
+	          "files": [ "<(PRODUCT_DIR)/<(module_name).node" ],
+	          "destination": "<(module_path)"
+	        }
+	      ]
+	    });
+		console.error('writing binding.gyp...');
+		fs.writeFileSync('./binding.gyp', JSON.stringify(data, null, '  '));
+	}
 
 	var pack = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
+	console.error('writing package.json...');
 	if (!pack.binary) {
 		pack.binary = {
 		    "module_name": targetName,
@@ -33,4 +39,5 @@ gyp('./binding.gyp', function (err, data) {
 	pack.binary.package_name = "{module_name}-v{version}-{node_abi}-{platform}-{arch}-{configuration}.tar.gz";
 
 	fs.writeFileSync('package.json', JSON.stringify(pack, null, '  '));
+	console.error('kk');
 });
