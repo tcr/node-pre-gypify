@@ -1,0 +1,26 @@
+{
+  "name": "node-pre-gypify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "node-precompilify": "./precompilify.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tcr/node-precompilify.git"
+  },
+  "keywords": [],
+  "author": "Tim Cameron Ryan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tcr/node-precompilify/issues"
+  },
+  "homepage": "https://github.com/tcr/node-precompilify",
+  "dependencies": {
+    "gyp-reader": "0.0.2"
+  }
+}
