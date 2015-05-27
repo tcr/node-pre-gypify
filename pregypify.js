@@ -37,7 +37,7 @@ gyp('./binding.gyp', function (err, data) {
 			};
 		}
 
-		pack.binary.package_name = "{module_name}-v{version}-{node_abi}-{platform}-{arch}-{configuration}.tar.gz";
+		pack.binary.package_name = "{name}-v{version}-{module_name}-{node_abi}-{platform}-{arch}-{configuration}.tar.gz";
 
 		fs.writeFileSync('package.json', JSON.stringify(pack, null, '  '));
 		console.error('kk');
