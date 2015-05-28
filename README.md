@@ -1,4 +1,4 @@
-# node-pre-gypify
+# pre-gypify
 
 Shoehorn pre-gyp compilation into non pre-gyp modules.
 

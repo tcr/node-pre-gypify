@@ -1,25 +1,25 @@
 {
-  "name": "node-pre-gypify",
-  "version": "1.2.0",
-  "description": "",
+  "name": "pre-gypify",
+  "version": "1.3.0",
+  "description": "Shoehorn pre-gyp compilation into non pre-gyp modules.",
   "main": "index.js",
   "bin": {
-    "node-pre-gypify": "./pregypify.js"
+    "node-pre-gypify": "./pre-gypify.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tcr/node-precompilify.git"
+    "url": "https://github.com/tcr/pre-gypify.git"
   },
   "keywords": [],
   "author": "Tim Cameron Ryan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tcr/node-precompilify/issues"
+    "url": "https://github.com/tcr/pre-gypify/issues"
   },
-  "homepage": "https://github.com/tcr/node-precompilify",
+  "homepage": "https://github.com/tcr/pre-gypify",
   "dependencies": {
     "gyp-reader": "0.0.2",
     "nomnom": "^1.8.1"
