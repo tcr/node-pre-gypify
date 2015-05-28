@@ -6,7 +6,9 @@ var gyp = require('gyp-reader');
 
 gyp('./binding.gyp', function (err, data) {
   setImmediate(function () {
-    var targetName = data.targets[0].target_name;
+    var targetName = data.targets.filter(function (target) {
+      return !target.type;
+    })[0].target_name;
 
     if (!data.targets.some(function (target) {
       return target.target_name == 'action_after_build'
