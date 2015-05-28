@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/tcr/node-precompilify",
   "dependencies": {
-    "gyp-reader": "0.0.2"
+    "gyp-reader": "0.0.2",
+    "nomnom": "^1.8.1"
   }
 }
