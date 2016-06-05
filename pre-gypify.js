@@ -5,6 +5,9 @@ var opts = require("nomnom").parse();
 var gyp = require("gyp-reader");
 
 gyp("./binding.gyp", function (err, data) {
+  if (err) {
+    console.error(err.stack);
+  }
   var targetName = data.targets.filter(function (target) {
     return !target.type;
   })[0].target_name;
