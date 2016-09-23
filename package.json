@@ -1,6 +1,6 @@
 {
   "name": "pre-gypify",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Shoehorn pre-gyp compilation into non pre-gyp modules.",
   "main": "index.js",
   "bin": {

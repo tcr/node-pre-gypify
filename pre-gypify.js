@@ -4,10 +4,25 @@ var fs = require("fs");
 var opts = require("nomnom").parse();
 var gyp = require("gyp-reader");
 
+try {
+  fs.lstatSync('binding.gyp');
+} catch (e) {
+  console.error('binding.gyp does not exist.');
+  console.error('Are you sure this is a binary node module?');
+  process.exit(1);
+}
+
 gyp("./binding.gyp", function (err, data) {
-  if (err) {
-    console.error(err.stack);
+  if (err || !data) {
+    console.error('Error when parsing binding.gyp:');
+    if (err) {
+      console.error(err.stack);
+    } else {
+      console.error('no data in binding.gyp file!');
+    }
+    process.exit(1);
   }
+
   var targetName = data.targets.filter(function (target) {
     return !target.type;
   })[0].target_name;
