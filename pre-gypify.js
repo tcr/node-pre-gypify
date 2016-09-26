@@ -59,6 +59,8 @@ gyp("./binding.gyp", function (err, data) {
     host: "example.com",
   });
 
+  delete packageJson.binary.remote_path;
+
   packageJson.binary.package_name = opts.package_name || "{module_name}-v{version}.tar.gz";
 
   console.error("writing package.json...");
