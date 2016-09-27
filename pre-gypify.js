@@ -23,7 +23,13 @@ gyp("./binding.gyp", function (err, data) {
     process.exit(1);
   }
 
-  var targetName = data.targets.filter(function (target) {
+  var packageJson = JSON.parse(fs.readFileSync("./package.json", "utf-8"));
+
+  if (!packageJson.binary) {
+    packageJson.binary = {};
+  }
+
+  var targetName = packageJson.binary.module_name || data.targets.filter(function (target) {
     return !target.type;
   })[0].target_name;
 
@@ -44,12 +50,6 @@ gyp("./binding.gyp", function (err, data) {
     });
     console.error("writing binding.gyp...");
     fs.writeFileSync("./binding.gyp", JSON.stringify(data, null, "  "));
-  }
-
-  var packageJson = JSON.parse(fs.readFileSync("./package.json", "utf-8"));
-
-  if (!packageJson.binary) {
-    packageJson.binary = {};
   }
 
   // Merge existing packageJson.binary with ours
